@@ -4,6 +4,7 @@ Persona 3
 </title>
 
 <head>
+    <link rel="stylesheet" type="text/css" href="style.css" />
     <style>
         body {
             display: flex;
@@ -29,14 +30,27 @@ Persona 3
 	    
         }
         .text {
-            max-width: 500px; /* Ограничиваем максимальную ширину текста */
-	    color: ceff1d;
+        max-width: 500px; /* Ограничиваем максимальную ширину текста */
+	    color: f8f32b;
 	    font-size: 20px;
 	     
         }
 	
 	
     </style>
+    <script>
+        // Функция для добавления текста на страницу
+        function displayText() {
+            var inputData = document.getElementById("userInput").value;
+            if (inputData) {
+                var outputContainer = document.getElementById("output");
+                var newParagraph = document.createElement("p");
+                newParagraph.textContent = inputData;
+                outputContainer.appendChild(newParagraph);
+                document.getElementById("userInput").value = ""; // Очистка поля ввода
+            }
+        }
+    </script>
 </head>
 <a href = "index.html">
     <img src = "exit.png" style="position: absolute; left: 0; top: 0;" alt = "Выход" width = "150">
@@ -54,5 +68,14 @@ Persona 3
 Макото уникален среди своих соратников тем, что может управлять множеством персон и переключаться между ними в бою. Он также единственный человек с доступом в Бархатную комнату.</p>
         </div>
     </div>
+<br></br>
+	<div class = "text">
+    <form onsubmit="event.preventDefault(); displayText();">
+        <label for="userInput">Оставить отзыв:</label>
+        <input type="text" id="userInput" required>
+        <button type="submit">Отправить</button>
+    </form>
+	</div>
+    <div id="output" class = "text"></div>
 </body>
 </html>
